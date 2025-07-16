@@ -17,12 +17,16 @@ export function Footer() {
               while maintaining privacy and performance.
             </p>
             <div className="flex space-x-4">
-              <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
-                <Github className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
-                <Twitter className="h-5 w-5" />
-              </Button>
+              <a href="https://github.com/WanderingSould" target="_blank">
+                <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
+                  <Github className="h-5 w-5" />
+                </Button>
+              </a>
+              <a href="https://x.com/Shenoy_Scripts" target="_blank">
+                <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
+                  <Twitter className="h-5 w-5" />
+                </Button>
+              </a>
               <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
                 <Mail className="h-5 w-5" />
               </Button>

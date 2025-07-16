@@ -154,14 +154,18 @@ export function ContactSection() {
               </CardHeader>
               <CardContent>
                 <div className="flex space-x-4">
-                  <Button variant="outline" className="border-purple-400/30 text-purple-300 bg-transparent">
-                    <Github className="mr-2 h-4 w-4" />
-                    GitHub
-                  </Button>
-                  <Button variant="outline" className="border-purple-400/30 text-purple-300 bg-transparent">
-                    <Twitter className="mr-2 h-4 w-4" />
-                    Twitter
-                  </Button>
+                  <a href="https://github.com/WanderingSould" target="_blank">
+                    <Button variant="outline" className="border-purple-400/30 text-purple-300 bg-transparent">
+                      <Github className="mr-2 h-4 w-4" />
+                      GitHub
+                    </Button>
+                  </a>
+                  <a href="https://x.com/Shenoy_Scripts" target="_blank">
+                    <Button variant="outline" className="border-purple-400/30 text-purple-300 bg-transparent">
+                      <Twitter className="mr-2 h-4 w-4" />
+                      Twitter
+                    </Button>
+                  </a>
                 </div>
               </CardContent>
             </Card>

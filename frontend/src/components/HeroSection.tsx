@@ -38,11 +38,11 @@ export function HeroSection() {
           </Button>
           <a href="https://github.com/WanderingSould" target="_blank">
 
-          <Button size="lg" variant="ghost" className="text-gray-300 hover:text-white text-lg px-8 py-3">
-            <Github className="mr-2 h-5 w-5" />
-            GitHub
-            
-          </Button>
+            <Button size="lg" variant="ghost" className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white text-lg px-8 py-3">
+              <Github className="mr-2 h-5 w-5" />
+              GitHub
+              
+            </Button>
           </a>
 
         </div>

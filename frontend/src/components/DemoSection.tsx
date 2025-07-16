@@ -1,14 +1,104 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
 import { Button } from "./ui/button"
 import { Badge } from "./ui/badge"
 import { Play, Pause, Volume2, Mic, Brain, Eye } from "lucide-react"
+import React from "react";
 
 export function DemoSection() {
   const [activeDemo, setActiveDemo] = useState("chatbot")
   const [isPlaying, setIsPlaying] = useState(false)
+  const [gameDetected, setGameDetected] = useState("");
+  const [ocrStream, setOcrStream] = useState<MediaStream | null>(null);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+  const ocrIntervalRef = React.useRef<NodeJS.Timeout | null>(null);
+
+
+  useEffect(() => {
+    if (!isPlaying) return;
+    async function requestScreenCapture() {
+      if (navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia) {
+        try {
+          const stream = await navigator.mediaDevices.getDisplayMedia({
+            video: {
+              displaySurface: 'monitor'
+            }
+          });
+          setOcrStream(stream);
+        } catch (err) {
+          console.warn("Screen capture permission denied or error occurred", err);
+        }
+      }
+    }
+    requestScreenCapture();
+  }, [isPlaying]);
+
+  // Cleanup effect: only runs when isPlaying becomes false or on unmount
+  useEffect(() => {
+    if (isPlaying) return;
+    if (ocrStream) {
+      ocrStream.getTracks().forEach(track => track.stop());
+      setOcrStream(null);
+    }
+    setGameDetected("");
+    if (ocrIntervalRef.current) {
+      clearInterval(ocrIntervalRef.current);
+      ocrIntervalRef.current = null;
+    }
+    // eslint-disable-next-line
+  }, [isPlaying]);
+
+  // OCR processing when OCR demo is active and stream is available
+  useEffect(() => {
+    if (!isPlaying || activeDemo !== "ocr" || !ocrStream) {
+      if (ocrIntervalRef.current) {
+        clearInterval(ocrIntervalRef.current);
+        ocrIntervalRef.current = null;
+      }
+      return;
+    }
+    const video = videoRef.current;
+    if (!video) return;
+    // Run OCR every 2 seconds
+    ocrIntervalRef.current = setInterval(async () => {
+      if (!video.videoWidth || !video.videoHeight) return;
+      // Crop to top 8% of the screen for OCR
+      const cropHeight = Math.floor(video.videoHeight * 0.08);
+      const canvas = document.createElement("canvas");
+      canvas.width = video.videoWidth;
+      canvas.height = cropHeight;
+      const ctx = canvas.getContext("2d");
+      ctx?.drawImage(video, 0, 0, canvas.width, cropHeight, 0, 0, canvas.width, cropHeight);
+    }, 2000);
+    return () => {
+      if (ocrIntervalRef.current) {
+        clearInterval(ocrIntervalRef.current);
+        ocrIntervalRef.current = null;
+      }
+    };
+  }, [isPlaying, activeDemo, ocrStream]);
+
+  // Set video srcObject when ocrStream changes
+  useEffect(() => {
+    if (videoRef.current && ocrStream) {
+      (videoRef.current as any).srcObject = ocrStream;
+    }
+  }, [ocrStream]);
+
+
+  useEffect(() => {
+    if (activeDemo === "ocr" && isPlaying) {
+      const interval = setInterval(() => {
+        fetch("/api/current-app")
+          .then(res => res.json())
+          .then(data => setGameDetected(data.windowTitle || data.appName || "Unknown"))
+          .catch(() => setGameDetected("Error fetching app"));
+      }, 2000);
+      return () => clearInterval(interval);
+    }
+  }, [activeDemo, isPlaying]);
 
   const demoFeatures = [
     {
@@ -95,21 +185,40 @@ export function DemoSection() {
               <CardContent>
                 <div className="bg-black/40 rounded-lg p-6 mb-6 min-h-[300px] flex items-center justify-center">
                   <div className="text-center">
-                    <div className="text-6xl mb-4">
-                      {activeDemo === "chatbot" && "🤖"}
-                      {activeDemo === "voice" && "🎤"}
-                      {activeDemo === "ocr" && "👁️"}
-                      {activeDemo === "tts" && "🔊"}
-                    </div>
-                    <p className="text-gray-400 mb-4">
-                      {activeDemo === "chatbot" && "AI chatbot interface would appear here"}
-                      {activeDemo === "voice" && "Voice recognition interface would appear here"}
-                      {activeDemo === "ocr" && "OCR game data extraction would appear here"}
-                      {activeDemo === "tts" && "Text-to-speech controls would appear here"}
-                    </p>
-                    <Badge variant="outline" className="border-purple-400/30 text-purple-300">
-                      Demo Placeholder
-                    </Badge>
+                    {activeDemo === "ocr" && ocrStream ? (
+                      <>
+                        <video
+                          ref={videoRef}
+                          autoPlay
+                          playsInline
+                          muted
+                          className="mx-auto mb-4 max-h-48 rounded"
+                          style={{ maxWidth: '100%' }}
+                        />
+                        <p className="text-gray-400 mb-4">
+                          OCR Extracted: <span className="text-green-400">{gameDetected}</span>
+
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <div className="text-6xl mb-4">
+                          {activeDemo === "chatbot" && "🤖"}
+                          {activeDemo === "voice" && "🎤"}
+                          {activeDemo === "ocr" && "👁️"}
+                          {activeDemo === "tts" && "🔊"}
+                        </div>
+                        <p className="text-gray-400 mb-4">
+                          {activeDemo === "chatbot" && "AI chatbot interface would appear here"}
+                          {activeDemo === "voice" && "Voice recognition interface would appear here"}
+                          {activeDemo === "ocr" && "OCR game data extraction would appear here"}
+                          {activeDemo === "tts" && "Text-to-speech controls would appear here"}
+                        </p>
+                        <Badge variant="outline" className="border-purple-400/30 text-purple-300">
+                          Demo Placeholder
+                        </Badge>
+                      </>
+                    )}
                   </div>
                 </div>
 
@@ -122,6 +231,11 @@ export function DemoSection() {
                     Reset
                   </Button>
                 </div>
+                {gameDetected && (
+                  <div className="mt-4 text-green-400 font-semibold text-center">
+                    Game Detected {gameDetected}
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>
