@@ -6,6 +6,7 @@ import { Button } from "./ui/button"
 import { Badge } from "./ui/badge"
 import { Play, Pause, Volume2, Mic, Brain, Eye } from "lucide-react"
 import React from "react";
+import Tesseract from "tesseract.js";
 
 export function DemoSection() {
   const [activeDemo, setActiveDemo] = useState("chatbot")
@@ -61,17 +62,21 @@ export function DemoSection() {
     }
     const video = videoRef.current;
     if (!video) return;
-    // Run OCR every 2 seconds
+
     ocrIntervalRef.current = setInterval(async () => {
       if (!video.videoWidth || !video.videoHeight) return;
-      // Crop to top 8% of the screen for OCR
-      const cropHeight = Math.floor(video.videoHeight * 0.08);
+      // Capture the current video frame
       const canvas = document.createElement("canvas");
       canvas.width = video.videoWidth;
-      canvas.height = cropHeight;
+      canvas.height = video.videoHeight;
       const ctx = canvas.getContext("2d");
-      ctx?.drawImage(video, 0, 0, canvas.width, cropHeight, 0, 0, canvas.width, cropHeight);
+      ctx?.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      // Run OCR on the canvas
+      const { data: { text } } = await Tesseract.recognize(canvas, "eng");
+      setGameDetected(text.trim().split("\n")[0] || "No text detected");
     }, 2000);
+
     return () => {
       if (ocrIntervalRef.current) {
         clearInterval(ocrIntervalRef.current);
@@ -88,17 +93,17 @@ export function DemoSection() {
   }, [ocrStream]);
 
 
-  useEffect(() => {
-    if (activeDemo === "ocr" && isPlaying) {
-      const interval = setInterval(() => {
-        fetch("/api/current-app")
-          .then(res => res.json())
-          .then(data => setGameDetected(data.windowTitle || data.appName || "Unknown"))
-          .catch(() => setGameDetected("Error fetching app"));
-      }, 2000);
-      return () => clearInterval(interval);
-    }
-  }, [activeDemo, isPlaying]);
+  // useEffect(() => {
+  //   if (activeDemo === "ocr" && isPlaying) {
+  //     const interval = setInterval(() => {
+  //       fetch("/api/current-app")
+  //         .then(res => res.json())
+  //         .then(data => setGameDetected(data.windowTitle || data.appName || "Unknown"))
+  //         .catch(() => setGameDetected("Error fetching app"));
+  //     }, 2000);
+  //     return () => clearInterval(interval);
+  //   }
+  // }, [activeDemo, isPlaying]);
 
   const demoFeatures = [
     {
