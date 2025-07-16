@@ -36,10 +36,15 @@ export function HeroSection() {
             <Download className="mr-2 h-5 w-5" />
             Download
           </Button>
+          <a href="https://github.com/WanderingSould" target="_blank">
+
           <Button size="lg" variant="ghost" className="text-gray-300 hover:text-white text-lg px-8 py-3">
             <Github className="mr-2 h-5 w-5" />
             GitHub
+            
           </Button>
+          </a>
+
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
