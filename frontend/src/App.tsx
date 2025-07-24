@@ -4,6 +4,7 @@ import DemoPage from "./pages/DemoPage"
 import AboutPage from "./pages/AboutPage"
 import ContactPage from "./pages/ContactPage"
 import LoginPage from "./pages/LoginPage"
+import DownloadsPage from "./pages/DownloadsPage"
 import SignupPage from "./pages/SignupPage"
 import { Header } from "./components/Header"
 import { RouteTransition } from "./components/RouteTransition"
@@ -30,6 +31,7 @@ function App() {
         <Route path="/demo" element={<PrivateRoute><DemoPage /></PrivateRoute>} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/downloads" element={<DownloadsPage />} />
       </Routes>
     </div>
   )

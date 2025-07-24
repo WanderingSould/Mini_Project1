@@ -20,6 +20,7 @@ export function Header() {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
+    // { name: "Downloads", href: "/downloads" },
     ...(isAuthenticated 
       ? [] 
       : [

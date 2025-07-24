@@ -21,14 +21,16 @@ export function CallToAction() {
                   Try Demo
                 </Button>
               </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white text-lg px-8 py-3 bg-transparent"
-              >
-                <Download className="mr-2 h-5 w-5" />
-                Download Beta
-              </Button>
+              <Link to="/downloads">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white text-lg px-8 py-3 bg-transparent"
+                >
+                  <Download className="mr-2 h-5 w-5" />
+                  Download Beta
+                </Button>
+              </Link>
               <a href="https://github.com/WanderingSould" target="_blank">
                 <Button size="lg" variant="ghost" className="text-gray-300 hover:text-white text-lg px-8 py-3">
                   <Github className="mr-2 h-5 w-5" />
