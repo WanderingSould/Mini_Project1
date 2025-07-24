@@ -1,21 +1,32 @@
 "use client"
 
 import { useState } from "react"
-import { Link, useLocation } from "react-router-dom"
-import { Button } from "./ui/button"
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import{ Button } from "./ui/button"
 import { Menu, X, Gamepad2 } from "lucide-react"
+import { useAuthStore } from "../lib/store"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
+  const { isAuthenticated, logout } = useAuthStore()
+
+  const handleLogout = () => {
+    logout()
+    navigate('/')
+  }
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "Features", href: "/features" },
-    { name: "Modules", href: "/modules" },
-    { name: "Tech Stack", href: "/tech-stack" },
-    { name: "Users", href: "/users" },
     { name: "About", href: "/about" },
+    ...(isAuthenticated 
+      ? [] 
+      : [
+          { name: "Login", href: "/login", public: true },
+          { name: "Sign Up", href: "/signup", public: true }
+        ]
+    )
   ]
 
   const isActive = (href: string) => {
@@ -48,17 +59,31 @@ export function Header() {
           </nav>
 
           <div className="hidden md:flex space-x-4">
-            <Link to="/demo">
-              <Button
-                variant="outline"
-                className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white bg-transparent"
-              >
-                Demo
-              </Button>
-            </Link>
+            <Button
+              variant="outline"
+              className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white bg-transparent"
+              onClick={() => {
+                if (!isAuthenticated) {
+                  navigate('/login');
+                } else {
+                  navigate('/demo');
+                }
+              }}
+            >
+            Demo
+            </Button>
             <Link to="/contact">
               <Button className="bg-purple-600 hover:bg-purple-700">Get Started</Button>
             </Link>
+            {isAuthenticated && (
+              <Button
+                variant="outline"
+                className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white bg-transparent"
+                onClick={handleLogout}
+              >
+                Logout
+              </Button>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -84,20 +109,40 @@ export function Header() {
                 </Link>
               ))}
               <div className="flex flex-col space-y-2 pt-4">
-                <Link to="/demo">
-                  <Button
-                    variant="outline"
-                    className="border-purple-400 text-purple-400 bg-transparent w-full"
+                <Button
+                  variant="outline"
+                  className="border-purple-400 text-purple-400 bg-transparent w-full"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    if (!isAuthenticated) {
+                      navigate('/login');
+                    } else {
+                      navigate('/demo');
+                    }
+                  }}
+                >
+                  Demo
+                </Button>
+                <Link to="/contact">
+                  <Button 
+                    className="bg-purple-600 hover:bg-purple-700 w-full" 
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    Demo
-                  </Button>
-                </Link>
-                <Link to="/contact">
-                  <Button className="bg-purple-600 hover:bg-purple-700 w-full" onClick={() => setIsMenuOpen(false)}>
                     Get Started
                   </Button>
                 </Link>
+                {isAuthenticated && (
+                  <Button
+                    variant="outline"
+                    className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white bg-transparent w-full"
+                    onClick={() => {
+                      handleLogout();
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    Logout
+                  </Button>
+                )}
               </div>
             </nav>
           </div>

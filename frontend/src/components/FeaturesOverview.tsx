@@ -52,7 +52,7 @@ export function FeaturesOverview() {
         </div>
 
         <div className="text-center">
-          <Link to="/features">
+          <Link to="/about">
             <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
               Explore All Features
               <ArrowRight className="ml-2 h-5 w-5" />

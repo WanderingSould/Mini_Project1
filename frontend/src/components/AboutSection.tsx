@@ -15,7 +15,7 @@ export function AboutSection() {
 
         {/* Project Overview */}
         <div className="mb-16">
-          <Card className="bg-white/5 border-white/10">
+          <Card className="bg-white/5 border-white/10 ">
             <CardHeader>
               <CardTitle className="text-white text-2xl">Project Overview</CardTitle>
             </CardHeader>
@@ -39,7 +39,7 @@ export function AboutSection() {
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-white mb-8 text-center">Project Team</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="bg-white/5 border-white/10">
+            <Card className="bg-white/5 border-white/10  hover:bg-white/10 transition-all duration-300 hover:scale-105">
               <CardHeader className="text-center">
                 <User className="h-16 w-16 text-purple-400 mx-auto mb-4" />
                 <CardTitle className="text-white">Swaroop Suresh</CardTitle>
@@ -53,7 +53,7 @@ export function AboutSection() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/5 border-white/10">
+            <Card className="bg-white/5 border-white/10  hover:bg-white/10 transition-all duration-300 hover:scale-105">
               <CardHeader className="text-center">
                 <GraduationCap className="h-16 w-16 text-purple-400 mx-auto mb-4" />
                 <CardTitle className="text-white">Dr. Sowmya K Menon</CardTitle>
@@ -73,7 +73,7 @@ export function AboutSection() {
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-white mb-8 text-center">Project Goals</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="bg-white/5 border-white/10">
+            <Card className="bg-white/5 border-white/10  hover:bg-white/10 transition-all duration-300 hover:scale-105">
               <CardHeader>
                 <Target className="h-8 w-8 text-purple-400 mb-2" />
                 <CardTitle className="text-white">Primary Objectives</CardTitle>
@@ -100,7 +100,7 @@ export function AboutSection() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/5 border-white/10">
+            <Card className="bg-white/5 border-white/10  hover:bg-white/10 transition-all duration-300 hover:scale-105">
               <CardHeader>
                 <Lightbulb className="h-8 w-8 text-purple-400 mb-2" />
                 <CardTitle className="text-white">Innovation Focus</CardTitle>
@@ -133,7 +133,7 @@ export function AboutSection() {
         <div>
           <h2 className="text-3xl font-bold text-white mb-8 text-center">Development Phases</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Card className="bg-gradient-to-br from-green-500/10 to-green-600/5 border-green-500/20">
+            <Card className="bg-white/5 border-white/10  hover:bg-white/10 transition-all duration-300 hover:scale-105">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-white text-xl">Phase 1: Offline Foundation</CardTitle>
@@ -165,7 +165,7 @@ export function AboutSection() {
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-purple-500/10 to-purple-600/5 border-purple-500/20">
+            <Card className="bg-white/5 border-white/10  hover:bg-white/10 transition-all duration-300 hover:scale-105">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-white text-xl">Phase 2: Hybrid Integration</CardTitle>

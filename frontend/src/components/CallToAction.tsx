@@ -7,7 +7,7 @@ export function CallToAction() {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto">
-        <Card className="bg-gradient-to-r from-purple-600/20 to-blue-600/20 border-purple-400/30">
+        <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-colors duration-300">
           <CardContent className="p-12 text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Transform Your Gaming?</h2>
             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">

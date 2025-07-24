@@ -41,7 +41,7 @@ export function TechStackSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Frontend Technologies */}
-          <Card className="bg-white/5 border-white/10">
+          <Card className="bg-white/5 border-white/10  hover:bg-white/10 transition-all duration-300 hover:scale-105">
             <CardHeader>
               <CardTitle className="text-white text-2xl flex items-center">
                 <div className="w-4 h-4 bg-blue-400 rounded-full mr-3"></div>
@@ -63,7 +63,7 @@ export function TechStackSection() {
           </Card>
 
           {/* Backend Technologies */}
-          <Card className="bg-white/5 border-white/10">
+          <Card className="bg-white/5 border-white/10  hover:bg-white/10 transition-all duration-300 hover:scale-105">
             <CardHeader>
               <CardTitle className="text-white text-2xl flex items-center">
                 <div className="w-4 h-4 bg-green-400 rounded-full mr-3"></div>
@@ -85,7 +85,7 @@ export function TechStackSection() {
           </Card>
 
           {/* AI Models */}
-          <Card className="bg-white/5 border-white/10">
+          <Card className="bg-white/5 border-white/10  hover:bg-white/10 transition-all duration-300 hover:scale-105">
             <CardHeader>
               <CardTitle className="text-white text-2xl flex items-center">
                 <div className="w-4 h-4 bg-purple-400 rounded-full mr-3"></div>
@@ -107,7 +107,7 @@ export function TechStackSection() {
           </Card>
 
           {/* Databases */}
-          <Card className="bg-white/5 border-white/10">
+          <Card className="bg-white/5 border-white/10  hover:bg-white/10 transition-all duration-300 hover:scale-105">
             <CardHeader>
               <CardTitle className="text-white text-2xl flex items-center">
                 <div className="w-4 h-4 bg-orange-400 rounded-full mr-3"></div>
