@@ -1,1 +1,29 @@
-{"name":"File Vault","short_name":"File Vault","description":"A secure file storage and sharing application","start_url":"/","display":"standalone","background_color":"#0f172a","theme_color":"#0f172a","lang":"en","scope":"/","icons":[{"src":"pwa-192x192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},{"src":"pwa-512x512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"},{"src":"pwa-512x512.png","sizes":"512x512","type":"image/png","purpose":"any"},{"src":"maskable-icon-512x512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}]}
+{
+  "name": "CAGE - AI Game Assistant",
+  "short_name": "CAGE",
+  "description": "AI-powered gaming assistant with privacy-first design",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "lang": "en",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    { "src": "/icon-152x152.png", "sizes": "152x152", "type": "image/png" },
+    { "src": "/icon-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-384x384.png", "sizes": "384x384", "type": "image/png" },
+    { "src": "/icon-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

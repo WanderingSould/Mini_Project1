@@ -88,7 +88,7 @@ export function FeaturesSection() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {offlineFeatures.map((feature, index) => (
-              <Card key={index} className="bg-white/5 border-white/10 hover:bg-white/10 transition-colors duration-300">
+              <Card key={index} className="bg-white/5 border-white/10 backdrop-blur-sm motion-safe:transition-all motion-safe:duration-500 hover:scale-105 hover:bg-white/10 hover:[transform-style:preserve-3d] hover:shadow-2xl">
                 <CardHeader>
                   <div className="flex items-center space-x-3">
                     <feature.icon className="h-8 w-8 text-purple-400" />
@@ -117,7 +117,7 @@ export function FeaturesSection() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {hybridFeatures.map((feature, index) => (
-              <Card key={index} className="bg-white/5 border-white/10 hover:bg-white/10 transition-colors duration-300">
+              <Card key={index} className="bg-white/5 border-white/10 backdrop-blur-sm motion-safe:transition-all motion-safe:duration-500 hover:scale-105 hover:bg-white/10 hover:[transform-style:preserve-3d] hover:shadow-2xl">
                 <CardHeader>
                   <div className="flex items-center space-x-3">
                     <feature.icon className="h-8 w-8 text-blue-400" />

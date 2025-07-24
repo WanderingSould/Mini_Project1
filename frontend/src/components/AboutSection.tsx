@@ -4,18 +4,18 @@ import { User, GraduationCap, Target, Lightbulb } from "lucide-react"
 
 export function AboutSection() {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-white mb-6">About CAGE</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+    <section className="min-h-screen flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-7xl">
+        <div className="text-center mb-24 [perspective:1000px] relative before:absolute before:inset-0 before:bg-purple-500/20 before:blur-3xl before:scale-150 before:-z-10">
+          <h1 className="text-7xl font-bold text-white mb-8 [text-shadow:0_4px_8px_rgba(0,0,0,0.5)]">About CAGE</h1>
+          <p className="text-2xl text-gray-300 max-w-3xl mx-auto tracking-wide">
             C - Carefully  A - Analysed  G - Game  E - Enthusiast!
           </p>
         </div>
 
         {/* Project Overview */}
-        <div className="mb-16">
-          <Card className="bg-white/5 border-white/10 ">
+        <div className="mb-24">
+          <Card className="bg-white/5 border-white/10 backdrop-blur-sm motion-safe:transition-all motion-safe:duration-300 hover:scale-[1.02] hover:bg-white/10">
             <CardHeader>
               <CardTitle className="text-white text-2xl">Project Overview</CardTitle>
             </CardHeader>
@@ -36,10 +36,10 @@ export function AboutSection() {
         </div>
 
         {/* Team */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Project Team</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="bg-white/5 border-white/10  hover:bg-white/10 transition-all duration-300 hover:scale-105">
+        <div className="mb-24 relative before:absolute before:inset-0 before:bg-purple-500/10 before:blur-3xl before:-z-10">
+          <h2 className="text-4xl font-bold text-white mb-12 text-center [text-shadow:0_4px_8px_rgba(0,0,0,0.5)]">Project Team</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            <Card className="bg-white/5 border-white/10 backdrop-blur-sm motion-safe:transition-all motion-safe:duration-500 hover:scale-105 hover:bg-white/10 hover:[transform-style:preserve-3d] hover:shadow-2xl">
               <CardHeader className="text-center">
                 <User className="h-16 w-16 text-purple-400 mx-auto mb-4" />
                 <CardTitle className="text-white">Swaroop Suresh</CardTitle>
@@ -53,7 +53,7 @@ export function AboutSection() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/5 border-white/10  hover:bg-white/10 transition-all duration-300 hover:scale-105">
+            <Card className="bg-white/5 border-white/10 backdrop-blur-sm motion-safe:transition-all motion-safe:duration-500 hover:scale-105 hover:bg-white/10 hover:[transform-style:preserve-3d] hover:shadow-2xl">
               <CardHeader className="text-center">
                 <GraduationCap className="h-16 w-16 text-purple-400 mx-auto mb-4" />
                 <CardTitle className="text-white">Dr. Sowmya K Menon</CardTitle>
@@ -70,10 +70,10 @@ export function AboutSection() {
         </div>
 
         {/* Project Goals */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Project Goals</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="bg-white/5 border-white/10  hover:bg-white/10 transition-all duration-300 hover:scale-105">
+        <div className="mb-24 relative before:absolute before:inset-0 before:bg-purple-500/10 before:blur-3xl before:-z-10">
+          <h2 className="text-4xl font-bold text-white mb-12 text-center [text-shadow:0_4px_8px_rgba(0,0,0,0.5)]">Project Goals</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <Card className="bg-white/5 border-white/10 backdrop-blur-sm motion-safe:transition-all motion-safe:duration-500 hover:scale-105 hover:bg-white/10 hover:[transform-style:preserve-3d] hover:shadow-2xl">
               <CardHeader>
                 <Target className="h-8 w-8 text-purple-400 mb-2" />
                 <CardTitle className="text-white">Primary Objectives</CardTitle>
@@ -130,10 +130,10 @@ export function AboutSection() {
         </div>
 
         {/* Development Phases */}
-        <div>
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Development Phases</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Card className="bg-white/5 border-white/10  hover:bg-white/10 transition-all duration-300 hover:scale-105">
+        <div className="relative before:absolute before:inset-0 before:bg-purple-500/10 before:blur-3xl before:-z-10">
+          <h2 className="text-4xl font-bold text-white mb-12 text-center [text-shadow:0_4px_8px_rgba(0,0,0,0.5)]">Development Phases</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <Card className="bg-white/5 border-white/10 backdrop-blur-sm motion-safe:transition-all motion-safe:duration-500 hover:scale-105 hover:bg-white/10 hover:[transform-style:preserve-3d] hover:shadow-2xl">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-white text-xl">Phase 1: Offline Foundation</CardTitle>
@@ -145,7 +145,7 @@ export function AboutSection() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2 ">
                     <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                     <span className="text-gray-300 text-sm">Local LLM integration (Ollama)</span>
                   </div>

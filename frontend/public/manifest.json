@@ -1,7 +1,7 @@
 {
-  "name": "File Vault",
-  "short_name": "File Vault",
-  "description": "A secure file storage and sharing application",
+  "name": "CAGE - AI Game Assistant",
+  "short_name": "CAGE",
+  "description": "AI-powered gaming assistant with privacy-first design",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f172a",

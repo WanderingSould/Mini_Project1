@@ -1,12 +1,14 @@
-
 @echo off
+
 :START
+
+cd C:\college\Mini_Project1\frontend
+npm install
 
 echo ====================================================================================
 echo Welcome! Project made and run by Swaroop Suresh with a little help from Ai.
 echo ====================================================================================
 
-cd C:\college\Mini_Project1\frontend
 
 start msedge http://localhost:5173/
 

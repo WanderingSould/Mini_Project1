@@ -9,12 +9,23 @@ export function PWAUpdatePrompt() {
     updateServiceWorker,
   } = useRegisterSW({
     onNeedRefresh() {
-      setShowPrompt(true);
+      // Only show the prompt in production
+      if (process.env.NODE_ENV === 'production') {
+        setShowPrompt(true);
+      }
     },
+    onRegisteredSW(_swUrl, r) {
+      // Check for updates every hour in production
+      if (process.env.NODE_ENV === 'production') {
+        setInterval(() => {
+          r?.update();
+        }, 60 * 60 * 1000);
+      }
+    }
   });
 
   useEffect(() => {
-    if (needRefresh) {
+    if (needRefresh && process.env.NODE_ENV === 'production') {
       setShowPrompt(true);
     }
   }, [needRefresh]);
