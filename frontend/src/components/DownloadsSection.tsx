@@ -42,7 +42,7 @@ export function DownloadsSection() {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400">Release Date:</span>
-                  <span className="text-white">July 20, 2024</span>
+                  <span className="text-white">July 20, 2026</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400">Platform:</span>

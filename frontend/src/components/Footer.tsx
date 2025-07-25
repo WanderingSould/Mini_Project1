@@ -34,7 +34,7 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          {/* <div>
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
@@ -63,10 +63,10 @@ export function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Project Info */}
-          <div>
+          <div className="md:col-start-4 md:text-right">
             <h3 className="text-white font-semibold mb-4">Project</h3>
             <ul className="space-y-2">
               <li>
@@ -83,7 +83,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 mt-8 pt-8 text-center">
-          <p className="text-gray-400">© 2024 CAGE - AI Game Assistant. Built with privacy and performance in mind.</p>
+          <p className="text-gray-400">© 2025 CAGE - AI Game Assistant. Built with privacy and performance in mind.</p>
         </div>
       </div>
     </footer>

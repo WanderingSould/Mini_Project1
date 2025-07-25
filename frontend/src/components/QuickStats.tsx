@@ -11,7 +11,7 @@ export function QuickStats() {
     },
     {
       icon: Zap,
-      value: "<10ms",
+      value: "<1000ms",
       label: "Response Time",
       description: "Ultra-low latency AI",
     },

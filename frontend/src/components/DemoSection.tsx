@@ -34,6 +34,7 @@ export function DemoSection() {
   const abortControllerRef = useRef<AbortController | null>(null);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const LanguageModel =  import.meta.env.OLLAMA_MODEL || 'gemma3';
 
   // Initialize Tesseract worker once
   useEffect(() => {
@@ -228,7 +229,13 @@ export function DemoSection() {
     setUserInput("");
     setChatMessages(prev => [...prev, { sender: 'user', text: message }]);
 
-    const prompt = `You are a helpful gaming buddy. Your name is CAGE. Keep your responses concise and conversational, like a quick chat message. The user is playing "${manualGameName || 'an unknown game'}". Here is some data from their screen:
+       const prompt = `You are CAGE, a specialized AI gaming assistant. Your ONLY purpose is to answer questions related to video games.
+- If the question is about a video game, provide a concise, helpful, and conversational answer.
+- If the question is NOT about video games, you MUST politely decline to answer. You can say something like, "I'm a gaming assistant, so I can only help with questions about video games. Is there a game I can help you with?"
+- Do NOT answer questions about any other topic, such as math, history, coding, or general knowledge.
+- If the user asks about a game that is not recognized, you can say something like, "I don't recognize that game. Can you tell me more about it?"
+The user is currently playing: "${manualGameName || 'an unknown game'}".
+Here is some data from their screen which might be relevant:
 ---
 ${ocrData || "No data available."}
 ---
@@ -241,7 +248,7 @@ Based on the screen data and the user's question, give a short, helpful tip or a
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'phi3', // Or llama3, mistral, etc.
+          model: LanguageModel, // Or llama3, mistral, etc.
           prompt: prompt,
           stream: false,
         }),

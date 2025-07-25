@@ -3,9 +3,9 @@ start msedge http://localhost:5173/
 
 :LOOP
 cls
-echo ====================================================================================
-echo Welcome! Project made and run by Swaroop Suresh with a little help from Ai.
-echo ====================================================================================
+echo ================================================
+echo Welcome! Project made and run by Swaroop Suresh
+echo ================================================
 
 cd /d C:\college\Mini_Project1\frontend
 
